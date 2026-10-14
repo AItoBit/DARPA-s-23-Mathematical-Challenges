@@ -73,7 +73,9 @@ The permitted logical axioms are `propext`, `Classical.choice`, and
 `Challenge.lean` is a standalone statement specification using only Mathlib
 imports. Its five deliberate proposition holes are expected: the full proof
 is in `Solution.lean`. All computational definitions needed to specify the
-obstruction are explicit. `comparator.json` selects the main theorem.
+obstruction are explicit. `comparator.json` selects all five proposition holes:
+surjectivity of matrix reduction, commutativity of its kernel, independence of
+kernel conjugation from the lift, the cocycle identity, and the main criterion.
 
 The pinned GitHub workflow builds the proof, audits axioms, and invokes
 Palomar's complete reusable verification workflow, including Comparator and

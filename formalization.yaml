@@ -135,6 +135,22 @@ review:
 alignment:
   namespace: Darpa018
   statements:
+    - source: "Invertible matrices lift across a surjective square-zero ring extension"
+      lean: Darpa018.MatrixSquareZero.units_map_surjective_of_squareZeroKernel
+      module: Solution
+      status: proved
+    - source: "The kernel of general linear reduction over a square-zero ring extension is abelian"
+      lean: Darpa018.MatrixSquareZero.units_map_ker_isMulCommutative
+      module: Solution
+      status: proved
+    - source: "Conjugation on an abelian kernel is independent of the chosen lift"
+      lean: Darpa018.GroupExtension.conj_eq_of_map_eq
+      module: Solution
+      status: proved
+    - source: "Associativity makes the defect of pointwise lifts a 2-cocycle"
+      lean: Darpa018.GroupExtension.defect_isCocycle
+      module: Solution
+      status: proved
     - source: "Classical abelian-extension lifting obstruction, specialized to square-zero matrix reduction"
       lean: Darpa018.RepresentationLifting.obstruction_zero_iff_lift
       module: Solution
