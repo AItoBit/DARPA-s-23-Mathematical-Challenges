@@ -35,6 +35,8 @@ jobs:
           for result in results:
               assert {a.strip() for a in result.split(',') if a.strip()} <= allowed, result
           PY
+      - name: Verify bundled cohomology sources against pinned Mathlib
+        run: python3 scripts/check_mathlib_sources.py
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:

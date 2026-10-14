@@ -1,0 +1,36 @@
+{
+  "commit": "c55e6e786f49471c72fbddbec5415808896aec1e",
+  "files": [
+    {
+      "path": "Mathlib/RepresentationTheory/Homological/GroupCohomology/LowDegree.lean",
+      "url": "https://raw.githubusercontent.com/leanprover-community/mathlib4/c55e6e786f49471c72fbddbec5415808896aec1e/Mathlib/RepresentationTheory/Homological/GroupCohomology/LowDegree.lean",
+      "sha256": "3b6c6a4c4905d71d14f7d4803b6adb9f709e7dfe49efb0c8053ef2223e0f4304",
+      "snapshot": "LowDegree.lean.txt"
+    },
+    {
+      "path": "Mathlib/RepresentationTheory/Homological/GroupCohomology/Basic.lean",
+      "url": "https://raw.githubusercontent.com/leanprover-community/mathlib4/c55e6e786f49471c72fbddbec5415808896aec1e/Mathlib/RepresentationTheory/Homological/GroupCohomology/Basic.lean",
+      "sha256": "facf62cfc9ce010352dc783cf8380c4c01097a8d6d83d7fcdc1d0518dab1c7f6",
+      "snapshot": "GroupCohomology.Basic.lean.txt"
+    },
+    {
+      "path": "Mathlib/RepresentationTheory/Rep/Basic.lean",
+      "url": "https://raw.githubusercontent.com/leanprover-community/mathlib4/c55e6e786f49471c72fbddbec5415808896aec1e/Mathlib/RepresentationTheory/Rep/Basic.lean",
+      "sha256": "cef303b0e5979b4246d4c4edfc6a7c9eceb3e7d423dee460741571bb62ce67ac",
+      "snapshot": "Rep.Basic.lean.txt"
+    },
+    {
+      "path": "Mathlib/Algebra/Homology/ShortComplex/ModuleCat.lean",
+      "url": "https://raw.githubusercontent.com/leanprover-community/mathlib4/c55e6e786f49471c72fbddbec5415808896aec1e/Mathlib/Algebra/Homology/ShortComplex/ModuleCat.lean",
+      "sha256": "f456483e9a96e598d4f383b67f33ae674990f49801ae9bde3d10323cef0c679c",
+      "snapshot": "ShortComplex.ModuleCat.lean.txt"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/leanprover-community/mathlib4/c55e6e786f49471c72fbddbec5415808896aec1e/LICENSE",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "snapshot": "LICENSE.txt"
+    }
+  ],
+  "repository": "https://github.com/leanprover-community/mathlib4"
+}

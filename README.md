@@ -55,11 +55,25 @@ source and statement audit. No independent human expert review is claimed.
 
 ## Reproduce the checks
 
+### Imported cohomology definitions
+
+Read [the cohomology definition guide](docs/COHOMOLOGY_DEFINITIONS.md) for
+the exact definitions of the imported cocycles, coboundaries, `H2` and `H2π`.
+The repository includes complete, unmodified copies of the pinned Mathlib
+`LowDegree`, group-cohomology `Basic`, `Rep.Basic` and short-complex
+`ModuleCat` sources, with their license and SHA-256 manifest. The guide traces
+the cochain differential, its kernel and image, the quotient, and their use
+by the obstruction construction. No external source fetch is needed to read
+these definitions. CI checks that the copies equal the pinned Git blobs.
+
+### Build and axiom audit
+
 The package pins Lean `v4.35.0-rc3` and Mathlib commit
 `c55e6e786f49471c72fbddbec5415808896aec1e`. With elan and Lake installed:
 
 ```sh
 lake exe cache get
+python3 scripts/check_mathlib_sources.py
 lake --wfail build Solution
 lake build Challenge
 lake env lean -DwarningAsError=true Audit.lean

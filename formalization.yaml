@@ -73,6 +73,11 @@ related_formalizations:
       Uses Mathlib's explicit degree-two cocycles, coboundaries, quotient map
       and H2 vanishing API. Matrix, units, conjugation, additive type-tag,
       and ideal APIs are also reused from this pinned Mathlib dependency.
+      Complete unmodified LowDegree, group-cohomology Basic, Rep.Basic and
+      short-complex ModuleCat sources are included as reference text in
+      docs/mathlib, with the upstream license and a SHA-256 manifest.
+      docs/COHOMOLOGY_DEFINITIONS.md traces the definitions and their use by
+      the obstruction. CI compares the copies with the pinned Git blobs.
       The complete project-specific construction and proof are included in
       Solution.lean; this repository is not a wrapper around another proof.
 
