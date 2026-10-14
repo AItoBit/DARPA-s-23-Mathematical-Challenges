@@ -86,7 +86,7 @@ abbrev kernelAction : DistribMulAction G (Additive q.ker) where
     calc
       _ = (l g * l h) * (x.toMul : E) * (l g * l h)⁻¹ :=
         conj_eq_of_map_eq q _ _ (by simp [hl]) _
-      _ = _ := by group
+      _ = _ := by simp only [mul_inv_rev, mul_assoc]
   smul_zero g := by
     apply Additive.toMul.injective
     exact map_one (MulAut.conjNormal (l g))
