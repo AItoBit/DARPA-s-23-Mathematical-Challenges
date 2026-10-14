@@ -56,7 +56,7 @@ source and statement audit. No independent human expert review is claimed.
 ## Reproduce the checks
 
 The package pins Lean `v4.35.0-rc3` and Mathlib commit
-`0db6cb99b412983de54b59ecc1b0b2747542cda3`. With elan and Lake installed:
+`c55e6e786f49471c72fbddbec5415808896aec1e`. With elan and Lake installed:
 
 ```sh
 lake exe cache get
@@ -82,6 +82,16 @@ Palomar's complete reusable verification workflow, including Comparator and
 NanoDa. A preflight pass is distinct from Palomar editorial acceptance or
 registration. See [workflow runs](https://github.com/AItoBit/DARPA-s-23-Mathematical-Challenges/actions).
 
+### Challenge render compatibility
+
+The [render run for the original submission](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/38598597507)
+failed during dependency-manifest merging because Mathlib and Verso pinned
+different Plausible commits. The package now uses Mathlib's official
+`v4.35.0-rc3` snapshot and its complete dependency manifest, whose shared pins
+match Palomar's Verso release. The Lean sources and Comparator targets are
+unchanged. The workflow reruns the proof build, axiom audit, and complete
+mechanical preflight for the repaired commit.
+
 ## Sources and provenance
 
 The precise result is the classical abelian-extension H² lifting obstruction,
@@ -100,7 +110,7 @@ research agenda is presented as a theorem proved by this repository.
 Galatius and Venkatesh's [Derived Galois deformation rings](https://arxiv.org/abs/1608.07236)
 provides related arithmetic context. No theorem of that paper is claimed to
 be formalized. The substantive formal dependency is Mathlib's
-[low-degree group cohomology](https://github.com/leanprover-community/mathlib4/blob/0db6cb99b412983de54b59ecc1b0b2747542cda3/Mathlib/RepresentationTheory/Homological/GroupCohomology/LowDegree.lean).
+[low-degree group cohomology](https://github.com/leanprover-community/mathlib4/blob/c55e6e786f49471c72fbddbec5415808896aec1e/Mathlib/RepresentationTheory/Homological/GroupCohomology/LowDegree.lean).
 Structured provenance and AI disclosure are in `formalization.yaml`.
 
 The repository's existing Apache-2.0 license applies to this development.
