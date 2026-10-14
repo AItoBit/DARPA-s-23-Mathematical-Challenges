@@ -1,0 +1,53 @@
+name: Palomar preflight
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: false
+      - name: Build the complete proof with warnings as errors
+        run: |
+          set -o pipefail
+          lake --wfail build Solution 2>&1 | tee proof-build.log
+          lake build Challenge 2>&1 | tee challenge-build.log
+          lake env lean -DwarningAsError=true Audit.lean 2>&1 | tee axioms.log
+          python3 - <<'PY'
+          import pathlib, re
+          text = pathlib.Path('axioms.log').read_text()
+          results = re.findall(r"depends on axioms: \[([^\]]*)\]", text)
+          # The 20 theorems plus four coefficient/obstruction definitions.
+          assert len(results) == 24, (len(results), text)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          for result in results:
+              assert {a.strip() for a in result.split(',') if a.strip()} <= allowed, result
+          PY
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: lean-proof-evidence
+          path: '*.log'
+  palomar:
+    needs: build
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: d4e41c1d5b0d114c4859e6e5831dc6d3ad1d0d44
+      request_id: darpa018test
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"comparator_config_path":"comparator.json","authorization_relationship":"I am a responsible author or maintainer"}'

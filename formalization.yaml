@@ -1,0 +1,146 @@
+version: v0.4
+
+project:
+  name: "H2 obstruction to lifting discrete matrix representations"
+  description: >-
+    A Lean proof that a discrete matrix representation lifts across a
+    surjective homomorphism of commutative rings with square-zero kernel
+    exactly when its explicitly constructed second-cohomology obstruction
+    vanishes. The proof constructs the conjugation action and defect cocycle
+    for an abelian group extension, proves the lifting criterion, and applies
+    it to reduction of invertible matrices. The underlying additive kernel
+    is identified with matrices over the coefficient-ring kernel. This is
+    classical obstruction theory motivated by DARPA Challenge 18, not a
+    solution of its homotopy/Langlands research agenda.
+  authors: ["AItoBit"]
+  responsible_maintainers: ["AItoBit"]
+  license: Apache-2.0
+
+classification:
+  arxiv: [math.GR, math.RA]
+  msc2020: [20J06]
+
+sources:
+  - title: "Classical H2 obstruction to lifting through an abelian group extension"
+    type: folklore
+    relationship: independently-proves
+    note: >-
+      A homomorphism into a quotient group lifts through a surjective
+      homomorphism with abelian kernel if and only if its defect cocycle
+      represents zero in H2 with the induced conjugation action. The present
+      development includes a direct proof and specializes it to a square-zero
+      extension of commutative rings. No novelty or first formalization is
+      claimed; there is no single bibliographic source for this folklore entry.
+    author_endorsement: n/a
+  - title: "User-supplied H2 cohomology and square-zero matrix lemmas"
+    type: other
+    relationship: adapts
+    note: >-
+      Six initial Lean lemmas supplied in the private development conversation:
+      the section-coboundary equivalence, two vanishing criteria, vanishing of
+      products of kernel matrices, and two invertibility criteria. These were
+      checked and extended to the main representation-lifting theorem. The
+      private communication is not independently publicly verifiable and does
+      not establish mathematical novelty or priority.
+    author_endorsement: participated
+  - title: "DARPA DSO BAA 07-68, Mathematical Challenge Eighteen (2007)"
+    type: other
+    relationship: background
+    location: "https://web.math.utk.edu/~vasili/refs/darpa07.MathChallenges.html"
+    note: >-
+      The user supplied a three-page darpa-18.pdf describing a homotopy and
+      Langlands research agenda. The cited original-source mirror returned
+      404 during this audit, so its contents were not independently verified.
+      The local document was read as motivation; no full solution of the
+      agenda or theorem about Langlands correspondences is claimed.
+    author_endorsement: not-contacted
+  - title: "Derived Galois deformation rings"
+    authors: ["Soren Galatius", "Akshay Venkatesh"]
+    type: paper
+    id: "arxiv:1608.07236"
+    location: "https://arxiv.org/abs/1608.07236"
+    relationship: background
+    note: >-
+      Context for the relationship between deformation theory and arithmetic.
+      The bibliographic record was checked; no theorem in this paper is
+      claimed to be formalized and it is not used as a proof dependency.
+    author_endorsement: not-contacted
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4/blob/0db6cb99b412983de54b59ecc1b0b2747542cda3/Mathlib/RepresentationTheory/Homological/GroupCohomology/LowDegree.lean"
+    relationship: builds-on
+    note: >-
+      Uses Mathlib's explicit degree-two cocycles, coboundaries, quotient map
+      and H2 vanishing API. Matrix, units, conjugation, additive type-tag,
+      and ideal APIs are also reused from this pinned Mathlib dependency.
+      The complete project-specific construction and proof are included in
+      Solution.lean; this repository is not a wrapper around another proof.
+
+status:
+  scope: >-
+    Complete proof of the main square-zero representation-lifting criterion
+    and 19 supporting theorems. Groups and representations are discrete.
+    The main statement quantifies over Type, commutative coefficient rings,
+    and a finite index type with decidable equality. Empty index types and
+    trivial groups are allowed. No continuity or arithmetic claims are made.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: [propext, Classical.choice, Quot.sound]
+
+automation:
+  methods:
+    - method: agent
+      models: ["OpenAI GPT-6 family via Codex"]
+      framework: "Codex with Mathematics Research Studio and Erdos Research Orchestrator"
+      tool_setup: >-
+        Agents searched local Mathlib APIs, completed and compiled proofs,
+        inspected the supplied PDF, and performed a separate source and
+        statement audit. Consensus supplied related bibliographic search
+        results. Undermind was requested but no callable tool was available.
+        Proof tactics include simp, abel, group and noncomm_ring. All proof
+        terms are kernel checked; native_decide is not used.
+      prompting_notes: >-
+        The human supplied six Lean lemmas, requested their completion and
+        a full solution inspired by DARPA-018, then requested GitHub and
+        Palomar publication. The published scope is the precise classical
+        representation-lifting theorem established by the development.
+  notes: >-
+    AItoBit is the human user's public GitHub handle. The human supplied the
+    starting code and requested publication. AI agents performed the proof
+    development, audit, toolchain port and packaging. There is no claim of
+    independent human expert review, mathematical novelty or priority.
+
+fidelity:
+  divergences: >-
+    The DARPA document is a research agenda rather than one proposition.
+    Only the stated discrete square-zero representation-lifting theorem is
+    claimed. The coefficient module is the additive reduction kernel with
+    its induced conjugation action, regarded as a module over the integers.
+    The development proves choice independence of vanishing, not literal
+    equality of classes across different action presentations. The matrix
+    coefficient identification is an additive equivalence; equivariance and
+    transport of H2 along that equivalence are not proved. No topology,
+    profinite, derived or Langlands correspondence statement is asserted.
+
+review:
+  status: agent-reviewed
+  reviewers: ["A separate Codex source-audit agent in the development task"]
+  notes: >-
+    The audit compared the supplied PDF, the exact formal statement and the
+    full proof, checked the limitations on coefficients and choices, and
+    distinguished the classical result from the DARPA research agenda.
+    This is an AI audit, not human peer review. The pinned workflow supplies
+    compiler, axiom and Palomar preflight evidence for the submitted snapshot.
+
+alignment:
+  namespace: Darpa018
+  statements:
+    - source: "Classical abelian-extension lifting obstruction, specialized to square-zero matrix reduction"
+      lean: Darpa018.RepresentationLifting.obstruction_zero_iff_lift
+      module: Solution
+      status: proved
+
+acknowledgements: >-
+  Mathlib contributors and Palomar's public verification tooling. Cited
+  mathematical sources retain their authorship; AI contributions are
+  disclosed in automation rather than credited as human authors.

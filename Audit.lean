@@ -1,0 +1,34 @@
+module
+
+import Solution
+
+#print axioms Darpa018.H2Core.hasSection_iff_isCoboundary₂
+#print axioms Darpa018.H2Core.obstructionClass_zero_iff_coboundary
+#print axioms Darpa018.H2Core.obstructionClass_zero_iff_section
+#print axioms Darpa018.MatrixSquareZero.mul_eq_zero_of_map_eq_zero
+#print axioms Darpa018.MatrixSquareZero.isUnit_of_square_zero_defects
+#print axioms Darpa018.MatrixSquareZero.isUnit_of_squareZeroKernel_approxInverse
+#print axioms Darpa018.MatrixSquareZero.map_surjective
+#print axioms Darpa018.MatrixSquareZero.isUnit_map_iff_of_squareZeroKernel
+#print axioms Darpa018.MatrixSquareZero.units_map_surjective_of_squareZeroKernel
+#print axioms Darpa018.MatrixSquareZero.units_commute_of_map_eq_one
+#print axioms Darpa018.MatrixSquareZero.units_map_ker_isMulCommutative
+#print axioms Darpa018.GroupExtension.conj_eq_of_map_eq
+#print axioms Darpa018.GroupExtension.defect_isCocycle
+#print axioms Darpa018.GroupExtension.hasSection_iff_lift
+#print axioms Darpa018.GroupExtension.obstruction_zero_iff_lift
+#print axioms Darpa018.GroupExtension.obstruction_zero_iff_of_lifts
+#print axioms Darpa018.GroupExtension.chosenLift_spec
+#print axioms Darpa018.GroupExtension.liftingObstruction_zero_iff_lift
+#print axioms Darpa018.KernelIdentification.coefficientAddEquiv_apply
+#print axioms Darpa018.RepresentationLifting.obstruction_zero_iff_lift
+#print axioms Darpa018.KernelIdentification.coefficientAddEquiv
+#print axioms Darpa018.GroupExtension.kernelAction
+#print axioms Darpa018.GroupExtension.defect
+#print axioms Darpa018.RepresentationLifting.obstruction
+
+set_option pp.proofs false in
+#print Darpa018.RepresentationLifting.obstruction_zero_iff_lift
+
+#check Darpa018.KernelIdentification.coefficientAddEquiv
+#check Darpa018.GroupExtension.obstruction_zero_iff_of_lifts
